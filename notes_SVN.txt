@@ -1,0 +1,18 @@
+using: http://svnbook.red-bean.com/en/1.7/svn.intro.quickstart.html
+
+# to create repository
+cd ~hsimmons/matlab
+mkdir svn;cd cvn
+svnadmin create repos
+
+# HLS: create master code base in /archive/u1/uaf/hsimmons/MATLAB/ROMS
+set MASTER_ROMS_LIBRARY = /archive/u1/uaf/hsimmons/MATLAB/ROMS
+svn import $MASTER_ROMS_LIBRARY file:///import/u/u1/uaf/hsimmons/matlab/svn/repos/ROMS -m "initial import"
+
+# HLS or JGP to checkout 
+cd ~/matlab;svn checkout  file:///import/u/u1/uaf/hsimmons/matlab/svn/repos/ROMS/trunk ROMS
+
+# HLS or JGP to add a new file to the repository
+cd ~/matlab/ROMS;svn add ROMS_locate_analysis_path.m
+cd ~/matlab/ROMS;svn add notes_SVN.txt
+svn commit -m "HLS:added some notes"
